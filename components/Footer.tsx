@@ -56,7 +56,7 @@ export default function Footer() {
                         <ul className="space-y-6 text-white/90 text-sm font-medium">
                             <li className="flex items-center gap-4">
                                 <div className="bg-white/10 p-2 rounded-lg text-white"><Mail size={18} /></div>
-                                <span>samraayeinaxuseen@gmail.com</span>
+                                <span>alhudaonline17@gmail.com</span>
                             </li>
                             <li className="flex items-center gap-4">
                                 <div className="bg-white/10 p-2 rounded-lg text-white"><Phone size={18} /></div>

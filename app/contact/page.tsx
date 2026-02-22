@@ -66,7 +66,7 @@ export default function ContactPage() {
                                     </div>
                                     <div>
                                         <h3 className="text-lg font-bold text-primary mb-1 font-serif tracking-tight">Email Correspondence</h3>
-                                        <p className="text-[var(--foreground)]/80 font-medium">samraayeinaxuseen@gmail.com</p>
+                                        <p className="text-[var(--foreground)]/80 font-medium">alhudaonline17@gmail.com</p>
                                         <p className="text-[var(--foreground)]/40 text-sm">Response within 24 hours</p>
                                     </div>
                                 </div>
