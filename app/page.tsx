@@ -4,6 +4,7 @@ import Footer from "@/components/Footer";
 import CourseCard from "@/components/CourseCard";
 import CTA from "@/components/CTA";
 import FAQ from "@/components/FAQ";
+import Pricing from "@/components/Pricing";
 import { courses } from "@/lib/data";
 import { GraduationCap, Globe, ShieldCheck, Trophy } from "lucide-react";
 
@@ -86,6 +87,8 @@ export default function Home() {
       </section>
 
       <FAQ />
+
+      <Pricing />
 
       <CTA />
       <Footer />

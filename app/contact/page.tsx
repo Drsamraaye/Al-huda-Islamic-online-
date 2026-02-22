@@ -1,8 +1,41 @@
+"use client";
+
+import { useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Mail, Phone, MapPin, MessageCircle, Send } from "lucide-react";
+import { Mail, Phone, MapPin, MessageCircle, Send, Loader2, CheckCircle2, AlertCircle } from "lucide-react";
 
 export default function ContactPage() {
+    const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+    const [formData, setFormData] = useState({
+        name: "",
+        email: "",
+        message: ""
+    });
+
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setStatus("loading");
+
+        try {
+            const response = await fetch("/api/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(formData)
+            });
+
+            if (response.ok) {
+                setStatus("success");
+                setFormData({ name: "", email: "", message: "" });
+            } else {
+                setStatus("error");
+            }
+        } catch (error) {
+            console.error("Contact error:", error);
+            setStatus("error");
+        }
+    };
+
     return (
         <main className="min-h-screen">
             <Navbar />
@@ -33,7 +66,7 @@ export default function ContactPage() {
                                     </div>
                                     <div>
                                         <h3 className="text-lg font-bold text-primary mb-1 font-serif tracking-tight">Email Correspondence</h3>
-                                        <p className="text-[var(--foreground)]/80 font-medium">info@alhuda.edu</p>
+                                        <p className="text-[var(--foreground)]/80 font-medium">samraayeinaxuseen@gmail.com</p>
                                         <p className="text-[var(--foreground)]/40 text-sm">Response within 24 hours</p>
                                     </div>
                                 </div>
@@ -55,7 +88,7 @@ export default function ContactPage() {
                                     </div>
                                     <div>
                                         <h3 className="text-lg font-bold text-primary mb-1 font-serif tracking-tight">Global Presence</h3>
-                                        <p className="text-[var(--foreground)]/80 font-medium">Headquarters: Global Online Hub</p>
+                                        <p className="text-[var(--foreground)]/80 font-medium">Headquarters: Hargeisa Somaliland</p>
                                         <p className="text-[var(--foreground)]/40 text-sm">Serving the Ummah worldwide</p>
                                     </div>
                                 </div>
@@ -64,24 +97,83 @@ export default function ContactPage() {
 
                         <div className="bg-[var(--card-bg)] rounded-[3rem] shadow-2xl shadow-black/5 p-12 lg:p-16 border border-accent/10">
                             <h2 className="text-3xl font-bold text-primary mb-10 font-serif tracking-tight">Direct Inquiry</h2>
-                            <form className="space-y-8">
-                                <div className="space-y-3">
-                                    <label className="block text-[10px] font-black text-primary/60 uppercase tracking-[0.3em] ml-2">Your Name</label>
-                                    <input type="text" className="w-full px-6 py-4 rounded-2xl bg-primary/5 border border-primary/10 focus:bg-[var(--card-bg)] focus:ring-2 focus:ring-primary outline-none font-bold text-[var(--foreground)]" placeholder="Enter full name" />
+
+                            {status === "success" ? (
+                                <div className="text-center py-20 space-y-6 animate-in fade-in zoom-in duration-500">
+                                    <div className="flex justify-center">
+                                        <CheckCircle2 size={100} className="text-accent" />
+                                    </div>
+                                    <h3 className="text-3xl font-black text-primary">Message Sent!</h3>
+                                    <p className="text-lg text-[var(--foreground)]/70">Thank you for reaching out. We will get back to you shortly.</p>
+                                    <button
+                                        onClick={() => setStatus("idle")}
+                                        className="inline-flex items-center justify-center px-10 py-3 text-sm font-black tracking-widest uppercase border-2 border-primary text-primary hover:bg-primary hover:text-white transition-all rounded-xl"
+                                    >
+                                        Send Another Message
+                                    </button>
                                 </div>
-                                <div className="space-y-3">
-                                    <label className="block text-[10px] font-black text-primary/60 uppercase tracking-[0.3em] ml-2">Email Identity</label>
-                                    <input type="email" className="w-full px-6 py-4 rounded-2xl bg-primary/5 border border-primary/10 focus:bg-[var(--card-bg)] focus:ring-2 focus:ring-primary outline-none font-bold text-[var(--foreground)]" placeholder="name@example.com" />
-                                </div>
-                                <div className="space-y-3">
-                                    <label className="block text-[10px] font-black text-primary/60 uppercase tracking-[0.3em] ml-2">Inquiry Details</label>
-                                    <textarea rows={4} className="w-full px-6 py-4 rounded-2xl bg-primary/5 border border-primary/10 focus:bg-[var(--card-bg)] focus:ring-2 focus:ring-primary outline-none font-bold text-[var(--foreground)]" placeholder="How can we assist you?"></textarea>
-                                </div>
-                                <button type="submit" className="w-full bg-primary text-[var(--background)] py-5 rounded-2xl text-lg font-black uppercase tracking-widest shadow-xl shadow-emerald-900/20 flex items-center justify-center gap-4 hover:opacity-90 transition-all">
-                                    <span>Send Inquiry</span>
-                                    <Send size={20} />
-                                </button>
-                            </form>
+                            ) : (
+                                <form onSubmit={handleSubmit} className="space-y-8">
+                                    <div className="space-y-3">
+                                        <label className="block text-[10px] font-black text-primary/60 uppercase tracking-[0.3em] ml-2">Your Name</label>
+                                        <input
+                                            required
+                                            type="text"
+                                            value={formData.name}
+                                            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                                            className="w-full px-6 py-4 rounded-2xl bg-primary/5 border border-primary/10 focus:bg-[var(--card-bg)] focus:ring-2 focus:ring-primary outline-none font-bold text-[var(--foreground)]"
+                                            placeholder="Enter full name"
+                                        />
+                                    </div>
+                                    <div className="space-y-3">
+                                        <label className="block text-[10px] font-black text-primary/60 uppercase tracking-[0.3em] ml-2">Email Identity</label>
+                                        <input
+                                            required
+                                            type="email"
+                                            value={formData.email}
+                                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                            className="w-full px-6 py-4 rounded-2xl bg-primary/5 border border-primary/10 focus:bg-[var(--card-bg)] focus:ring-2 focus:ring-primary outline-none font-bold text-[var(--foreground)]"
+                                            placeholder="name@example.com"
+                                        />
+                                    </div>
+                                    <div className="space-y-3">
+                                        <label className="block text-[10px] font-black text-primary/60 uppercase tracking-[0.3em] ml-2">Inquiry Details</label>
+                                        <textarea
+                                            required
+                                            rows={4}
+                                            value={formData.message}
+                                            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                                            className="w-full px-6 py-4 rounded-2xl bg-primary/5 border border-primary/10 focus:bg-[var(--card-bg)] focus:ring-2 focus:ring-primary outline-none font-bold text-[var(--foreground)]"
+                                            placeholder="How can we assist you?"
+                                        ></textarea>
+                                    </div>
+
+                                    {status === "error" && (
+                                        <div className="flex items-center gap-3 text-red-600 bg-red-50 p-4 rounded-xl border border-red-100">
+                                            <AlertCircle size={20} />
+                                            <span className="text-sm font-bold">Failed to send message. Please try again.</span>
+                                        </div>
+                                    )}
+
+                                    <button
+                                        disabled={status === "loading"}
+                                        type="submit"
+                                        className="w-full bg-primary text-[var(--background)] py-5 rounded-2xl text-lg font-black uppercase tracking-widest shadow-xl shadow-emerald-900/20 flex items-center justify-center gap-4 hover:opacity-90 transition-all disabled:opacity-50"
+                                    >
+                                        {status === "loading" ? (
+                                            <>
+                                                <span>Sending...</span>
+                                                <Loader2 size={20} className="animate-spin" />
+                                            </>
+                                        ) : (
+                                            <>
+                                                <span>Send Inquiry</span>
+                                                <Send size={20} />
+                                            </>
+                                        )}
+                                    </button>
+                                </form>
+                            )}
                         </div>
                     </div>
                 </div>

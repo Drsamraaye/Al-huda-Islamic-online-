@@ -18,31 +18,48 @@ export default function Hero() {
                             <span className="text-white text-xs md:text-sm font-black tracking-[0.4em] uppercase border-b border-[#EAB308] pb-2">
                                 Al-huda online academy
                             </span>
+                            <div className="mt-4 bg-[#EAB308]/20 border border-[#EAB308]/30 px-4 py-2 rounded-full inline-flex items-center gap-2">
+                                <span className="text-[#EAB308] font-black text-xs uppercase tracking-widest">Starting from</span>
+                                <span className="text-white font-black text-lg">$30/mo</span>
+                            </div>
                         </div>
 
-                        <h1 className="text-5xl md:text-8xl font-black leading-[0.9] mb-8 tracking-tighter font-serif">
-                            <span className="text-[#EAB308] block mb-2">AL-HUDA</span>
+                        <h1 className="text-4xl sm:text-6xl md:text-8xl font-black leading-[1.1] md:leading-[0.9] mb-6 md:mb-8 tracking-tighter font-serif">
+                            <span className="text-[#EAB308] block mb-1 md:mb-2">AL-HUDA</span>
                             <span className="text-white"> ONLINE QUR'AN</span>
                         </h1>
 
-                        <p className="text-lg md:text-xl text-white/95 mb-12 max-w-xl leading-relaxed font-medium">
+                        <p className="text-base md:text-xl text-white/95 mb-8 md:mb-12 max-w-xl leading-relaxed font-medium">
                             From beginners to Hifdh — comprehensive Islamic education designed for students of every age, ability, and schedule.
                         </p>
 
-                        <div className="flex flex-col sm:flex-row items-center gap-6 mb-12">
+                        <div className="flex flex-col sm:flex-row items-center gap-4 md:gap-6 mb-12">
                             <button
                                 onClick={openModal}
-                                className="bg-[#EAB308] text-black px-10 py-5 rounded-lg font-black text-lg hover:bg-[#D4A017] transition-all shadow-xl shadow-yellow-900/20 w-full sm:w-auto text-center"
+                                className="bg-[#EAB308] text-black px-8 md:px-10 py-4 md:py-5 rounded-lg font-black text-base md:text-lg hover:bg-[#D4A017] transition-all shadow-xl shadow-yellow-900/20 w-full sm:w-auto text-center"
                             >
                                 Book Free Demo Class
                             </button>
-                            <Link href="/courses" className="border-2 border-white/30 text-white hover:bg-white hover:text-[#064E3B] px-10 py-4.5 rounded-lg font-black text-lg transition-all w-full sm:w-auto text-center">
+                            <Link href="/courses" className="border-2 border-white/30 text-white hover:bg-white hover:text-[#064E3B] px-8 md:px-10 py-4 md:py-4.5 rounded-lg font-black text-base md:text-lg transition-all w-full sm:w-auto text-center">
                                 View Courses
                             </Link>
                         </div>
 
+                        {/* Mobile Image (Visible only on small screens) */}
+                        <div className="lg:hidden mb-12 relative">
+                            <div className="absolute -inset-4 bg-[#EAB308]/10 rounded-[2rem] blur-2xl"></div>
+                            <div className="relative rounded-[2rem] overflow-hidden border-4 border-white/5 shadow-2xl">
+                                <img
+                                    src="/courses/06b17d3c-b464-44b4-8e9d-aff1a64a8a41.jpg"
+                                    alt="Alhuda Online Academy"
+                                    className="w-full h-48 object-cover object-center"
+                                />
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#064E3B]/60 to-transparent"></div>
+                            </div>
+                        </div>
+
                         <div className="flex items-center gap-6 text-white/90">
-                            <span className="text-xs font-black uppercase tracking-widest text-white/70">Follow us:</span>
+                            <span className="text-[10px] md:text-xs font-black uppercase tracking-widest text-white/70">Follow us:</span>
                             <div className="flex items-center gap-4">
                                 <Link href="#" className="hover:text-[#EAB308] transition-colors"><Instagram size={18} /></Link>
                                 <Link href="#" className="hover:text-[#EAB308] transition-colors"><Facebook size={18} /></Link>

@@ -11,9 +11,9 @@ export default function CoursesPage() {
 
             <section className="bg-[var(--background)] py-24 text-[var(--foreground)] relative overflow-hidden">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-                    <span className="text-accent font-black text-xs uppercase tracking-[0.4em] mb-6 block">Our Curriculum</span>
-                    <h1 className="text-4xl md:text-7xl font-extrabold mb-8 tracking-tighter font-serif">Sacred Knowledge</h1>
-                    <p className="text-xl opacity-60 max-w-3xl mx-auto leading-relaxed">
+                    <span className="text-accent font-black text-[10px] md:text-xs uppercase tracking-[0.4em] mb-4 md:mb-6 block">Our Curriculum</span>
+                    <h1 className="text-3xl sm:text-5xl md:text-7xl font-extrabold mb-6 md:mb-8 tracking-tighter font-serif">Sacred Knowledge</h1>
+                    <p className="text-base md:text-xl opacity-60 max-w-3xl mx-auto leading-relaxed px-4 md:px-0">
                         Explore our professionally structured programs designed to guide you from foundation to mastery.
                     </p>
                 </div>

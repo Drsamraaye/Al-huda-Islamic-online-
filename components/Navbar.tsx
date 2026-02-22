@@ -14,6 +14,7 @@ export default function Navbar() {
     const navLinks = [
         { name: "Home", href: "/" },
         { name: "About", href: "/about" },
+        { name: "Pricing", href: "/pricing" },
         { name: "Courses", href: "/courses" },
         { name: "Contact", href: "/contact" },
     ];
@@ -24,7 +25,7 @@ export default function Navbar() {
                 <div className="flex items-center justify-between h-20">
                     <div className="flex items-center">
                         <Link href="/" className="flex items-center group">
-                            <div className="relative w-12 h-12 md:w-14 md:h-14 transition-transform group-hover:scale-110 duration-500">
+                            <div className="relative w-10 h-10 md:w-14 md:h-14 transition-transform group-hover:scale-110 duration-500 flex-shrink-0">
                                 <Image
                                     src="/Logo.png"
                                     alt="Al-Huda Online Logo"
@@ -33,9 +34,9 @@ export default function Navbar() {
                                     priority
                                 />
                             </div>
-                            <div className="ml-3 hidden sm:block">
-                                <span className="text-xl font-black text-[#064E3B] tracking-tighter block leading-none">AL-HUDA</span>
-                                <span className="text-[10px] font-black text-[#064E3B]/60 tracking-[0.2em] uppercase">Online Academy</span>
+                            <div className="ml-2 md:ml-3">
+                                <span className="text-lg md:text-xl font-black text-[var(--foreground)] tracking-tighter block leading-none">AL-HUDA</span>
+                                <span className="text-[8px] md:text-[10px] font-black text-[var(--foreground)]/60 tracking-[0.1em] md:tracking-[0.2em] uppercase whitespace-nowrap">Online Academy</span>
                             </div>
                         </Link>
                     </div>
@@ -65,10 +66,11 @@ export default function Navbar() {
                         </div>
                     </div>
 
-                    <div className="lg:hidden">
+                    <div className="lg:hidden flex items-center space-x-4">
+                        <ThemeToggle />
                         <button
                             onClick={() => setIsOpen(!isOpen)}
-                            className="inline-flex items-center justify-center p-2 rounded-md text-[#064E3B] hover:bg-emerald-50 focus:outline-none"
+                            className="inline-flex items-center justify-center p-2 rounded-md text-[var(--foreground)] hover:bg-[var(--primary)]/5 focus:outline-none"
                         >
                             {isOpen ? <X size={28} /> : <Menu size={28} />}
                         </button>
@@ -78,13 +80,13 @@ export default function Navbar() {
 
             {/* Mobile Menu */}
             {isOpen && (
-                <div className="lg:hidden bg-white border-t border-slate-100">
+                <div className="lg:hidden bg-[var(--background)] border-t border-[var(--foreground)]/5">
                     <div className="px-4 pt-4 pb-8 space-y-2">
                         {navLinks.map((link) => (
                             <Link
                                 key={link.name}
                                 href={link.href}
-                                className="block py-4 text-lg font-semibold text-slate-700 hover:text-[#064E3B]"
+                                className="block py-4 text-lg font-semibold text-[var(--foreground)]/80 hover:text-[var(--primary)]"
                                 onClick={() => setIsOpen(false)}
                             >
                                 {link.name}

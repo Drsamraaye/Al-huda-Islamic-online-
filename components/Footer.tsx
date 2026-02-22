@@ -39,6 +39,7 @@ export default function Footer() {
                         <ul className="space-y-4 text-white/90 text-sm font-medium">
                             <li><Link href="/" className="hover:text-accent transition-colors">Homepage</Link></li>
                             <li><Link href="/courses" className="hover:text-accent transition-colors">Courses</Link></li>
+                            <li><Link href="/pricing" className="hover:text-accent transition-colors">Pricing</Link></li>
                         </ul>
                     </div>
 
@@ -55,7 +56,7 @@ export default function Footer() {
                         <ul className="space-y-6 text-white/90 text-sm font-medium">
                             <li className="flex items-center gap-4">
                                 <div className="bg-white/10 p-2 rounded-lg text-white"><Mail size={18} /></div>
-                                <span>alhuda@gmail.com</span>
+                                <span>samraayeinaxuseen@gmail.com</span>
                             </li>
                             <li className="flex items-center gap-4">
                                 <div className="bg-white/10 p-2 rounded-lg text-white"><Phone size={18} /></div>

@@ -35,8 +35,8 @@ export default function CourseDetailPage({ params }: { params: Promise<{ slug: s
                                 <ChevronRight size={10} className="opacity-40" />
                                 <span className="text-[10px] font-black uppercase tracking-[0.2em] text-white/40">{course.title}</span>
                             </nav>
-                            <h1 className="text-6xl md:text-9xl font-black mb-8 leading-[0.9] tracking-tighter font-serif">
-                                <span className="text-[#EAB308] block mb-2">ALHUDA</span>
+                            <h1 className="text-4xl md:text-7xl lg:text-8xl font-black mb-8 leading-tight tracking-tight font-serif text-white">
+                                <span className="text-[#EAB308] block text-sm md:text-lg mb-4 tracking-[0.3em] font-sans">ALHUDA ACADEMY</span>
                                 {course.title}
                             </h1>
                             <p className="text-lg md:text-xl text-white/70 max-w-2xl mb-12 leading-relaxed italic font-serif">
@@ -133,7 +133,7 @@ export default function CourseDetailPage({ params }: { params: Promise<{ slug: s
                                 </div>
                                 <div className="mt-12 p-8 bg-primary/5 border border-primary/10 rounded-[2rem] text-center shadow-xl shadow-black/5">
                                     <div className="text-primary/40 text-[10px] font-black uppercase tracking-widest mb-2">Contribution</div>
-                                    <div className="text-4xl font-black text-primary font-serif tracking-tighter mb-8">$50 <span className="text-xs text-primary/40">/ mo</span></div>
+                                    <div className="text-4xl font-black text-primary font-serif tracking-tighter mb-8">$30 <span className="text-xs text-primary/40">/ mo</span></div>
                                     <button
                                         onClick={openModal}
                                         className="btn-primary w-full py-4 text-xs font-black uppercase tracking-[0.2em]"
