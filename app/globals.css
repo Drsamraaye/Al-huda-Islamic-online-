@@ -1,26 +1,148 @@
 @import "tailwindcss";
 
+/* 
+  Tailwind v4 Design System - INVERTED THEME
+*/
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* High-End Emerald & White Theme */
+  --background: #FFFFFF;
+  --foreground: #064E3B;
+  /* Use deep emerald for primary text readability */
+  --primary: #064E3B;
+  /* Brand Emerald */
+  --accent: #10B981;
+  /* Vibrant Emerald for small accents */
+  --card-bg: #F8FAFC;
+  /* Very light gray/slate for subtle depth */
+  --label-color: #064E3B;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+[data-theme='dark'] {
+  --background: #022C22;
+  /* Very deep emerald for professional dark mode */
+  --foreground: #FFFFFF;
+  /* Pure white for maximum contrast */
+  --primary: #EAB308;
+  /* Use vibrant gold as primary action color in dark mode */
+  --accent: #10B981;
+  /* Vibrant Emerald for small accents */
+  --card-bg: #064E3B;
+  /* Deep emerald for cards */
+  --label-color: #F0FDF4;
+  /* Very light green for labels */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@theme {
+  --color-primary: var(--primary);
+  --color-secondary: #065F46;
+  --color-accent: var(--accent);
+  --color-gold: #C6A75E;
+  --color-gold-bright: #EAB308;
+  --color-background-soft: var(--background);
+  --radius-lg: 0.5rem;
+  --shadow-soft: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+}
+
+/* Islamic Geometric Pattern Utility - Gold tinted as per screenshot */
+.bg-islamic-pattern {
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(234, 179, 8, 0.07) 1px, transparent 1px),
+    linear-gradient(rgba(234, 179, 8, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(234, 179, 8, 0.03) 1px, transparent 1px);
+  background-size: 80px 80px, 80px 80px, 80px 80px;
+}
+
+@layer base {
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-inter), sans-serif;
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: var(--primary);
+    letter-spacing: -0.025em;
+    font-family: var(--font-playfair), serif;
+    transition: color 0.4s ease;
+  }
+
+  /* When a section has bg-primary, headings should definitely be white or light accent */
+  .bg-primary h1,
+  .bg-primary h2,
+  .bg-primary h3,
+  .bg-primary h4,
+  .bg-primary h5,
+  .bg-primary h6 {
+    color: white;
+  }
+
+  /* Specific handling for Dark Mode Primary (Gold) headings on Dark Green BG */
+  [data-theme='dark'] h1,
+  [data-theme='dark'] h2,
+  [data-theme='dark'] h3 {
+    color: var(--primary);
+    /* This will be gold */
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+
+  /* Utility Buttons - Theme Aware */
+  .btn-primary {
+    background-color: var(--primary);
+    color: var(--background);
+    /* In light: green bg, white text. In dark: gold bg, green text. */
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 700;
+    transition: all 0.3s;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    cursor: pointer;
+    border: 1px solid transparent;
+  }
+
+  .btn-primary:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+  }
+
+  .btn-accent {
+    background-color: var(--accent);
+    color: var(--primary);
+    padding: 0.75rem 1.5rem;
+    border-radius: 0.5rem;
+    font-weight: 800;
+    transition: all 0.3s;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  .btn-accent:hover {
+    opacity: 0.95;
+    transform: translateY(-1px);
+  }
+
+  /* Premium Card Component */
+  .card {
+    background-color: var(--card-bg);
+    color: var(--foreground);
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    border: 1px solid rgba(198, 167, 94, 0.1);
+    /* Subtle gold border */
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 20px -5px rgba(0, 0, 0, 0.05);
+  }
+
+  .card:hover {
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    border-color: var(--accent);
+  }
 }
